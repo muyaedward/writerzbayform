@@ -7,7 +7,7 @@
 	Plugin Name: WriterzBay Order Form
 	Plugin URI: https://github.com/muyaedward/writerzbayform
 	Description: Wordpress plugin to manage orders in writerzbay website.
-	Version: 2.0.20
+	Version: 2.0.21
 	Author: Edward Muya Mwangi
 	Author URI: https://www.writersbayapp.com
 	Licence: GPLv2 or later
