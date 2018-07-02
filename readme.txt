@@ -1,0 +1,1 @@
+This is a WritersBay app product. To use please acquire a license from https://writersbayapp.com
