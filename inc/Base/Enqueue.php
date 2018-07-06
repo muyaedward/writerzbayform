@@ -26,8 +26,5 @@ class Enqueue extends BaseController
 		if (is_page(get_option( 'orderpage' ))) {
 			wp_enqueue_style( 'orderform', $this->plugin_url . 'assets/css/placeorder.css' );
 		}
-		if (is_page(get_option( 'loginpage' ))) {
-			wp_enqueue_style( 'orderform', $this->plugin_url . 'assets/css/login.css' );
-		}
 	}
 }
