@@ -98,13 +98,13 @@ function getRealIpAddr()
     return $ip;
 }
 try{
-	/* $xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=".getRealIpAddr());
+	$xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=".getRealIpAddr());
 	if ($xml->geoplugin_countryName == '' || $xml->geoplugin_countryName == null) {
 		$countryiso = 'us';
 	}else{
 		$countryiso = strtolower($xml->geoplugin_countryName);
-	} */
-	$countryiso = 'us';
+	}
+	//$countryiso = 'us';
 }
 catch (\Exception $e ) {
 	$countryiso = 'us';
@@ -113,6 +113,9 @@ $orderdata = [
 	'baseprice' => (int) get_option( 'base_price' ),
 	'logourl' => get_option( 'logo_url' ),
 	'websitename' => get_option( 'studentsite_name' ), //This will be the alt incase logo is unavailable
+	'contactphone' => '+254 722 47 64 34',
+	'skypesupport' => '@madayer',
+	'clientsitekey' => 'Student website',
 	'main_domain' => get_option( 'main_domain' ),
 	'website_domain' => get_permalink( get_option( 'orderpage' ) ),
 	'client_id' => get_option( 'client_id' ),
@@ -120,11 +123,10 @@ $orderdata = [
 	'loginpage' => get_permalink( get_option( 'loginpage' ) ),
 	'placeorderpage' => get_permalink( get_option( 'orderpage' ) ),
 	'managepage' => get_permalink( get_option( 'managepage' ) ),
-	'enablesidebar' => true, // This feature is coming soon. For now edit your sidebar manually below
 	'doctype' => $doctype,
 	'subject' => $subject,
 	'orderstyles' => $citation,
-	'preferred_writer' => $preferred_writer,
+	'preferredwriter' => $preferred_writer,
 	'powerpoint' => $powerpoint,
 	'plagiarismreport' => $plagiarismreport,
 	'abstractpage' => $abstractpage,
@@ -134,47 +136,42 @@ $orderdata = [
 	'paymentmethod' => [
 		[
 			'active' => true,
-			'imglocation' => plugins_url('assets/css/img/v3/icon-paypal.svg' , plugin_dir_path( __FILE__ )),
+			'selected' => true,
+			'imglocation' => '/admin/assets/img/v3/icon-paypal.svg',
 			'lable' => 'Paypal' // Do not change this lable, otherwise payment system will break
 		],
 		[
-			'active' => false,
-			'imglocation' => plugins_url('assets/css/img/v3/icon-card.svg' , plugin_dir_path( __FILE__ )),
+			'active' => true,
+			'selected' => false,
+			'imglocation' => '/admin/assets/img/v3/icon-card.svg',
 			'lable' => 'Credit card'
 		]
 	],		
 	'myip' => $countryiso,
-	'sidebarcontent' => [
-		'color' => 'blue', //choose between red, dark, blue, grean, black, yellow
-		'sidebars' => [
+	'footer' => [
+		'copyright' => '2018 Myhomeworkshark.com', //choose between red, dark, blue, grean, black, yellow
+		'links' => [
 			[
-				'active' => true,
-				'title' => 'Privacy & security',
-				'titleicon' => plugins_url('assets/css/images/svg/icon_lock.svg' , plugin_dir_path( __FILE__ )),
-				'htmlcontent' => '<p>We value our clients\' privacy and treat all personal information as private and confidential.</p>'
+				'anchor' => 'Tos',
+			    'link' => '/',
 			],
 			[
-				'active' => true,
-				'title' => 'Original content',
-				'titleicon' => plugins_url('assets/css/images/svg/icon_search.svg' , plugin_dir_path( __FILE__ )),
-				'htmlcontent' => '<p>Plagiarism is something we do not tolerate. We use multiple plagiarism scanners to ensure the originality
-				of the work you receive, every time.</p>'
+				'anchor' => 'Privacy Policy',
+			    'link' => '/',
 			],
 			[
-				'active' => true,
-				'title' => 'Free inclusions',
-				'titleicon' => plugins_url('assets/css/images/svg/icon_lock.svg' , plugin_dir_path( __FILE__ )),
-				'htmlcontent' => '<ul class="check-list"><li>Revisions and corrections</li><li>Title page</li><li>References page</li><li>Formatting</li></ul>'
+				'anchor' => 'Money backguarantee',
+			    'link' => '/',
 			],
 			[
-				'active' => false,
-				'title' => 'Clients\' reviews',
-				'titleicon' => plugins_url('assets/css/images/svg/icon_lock.svg' , plugin_dir_path( __FILE__ )),
-				'htmlcontent' => '<p>"Very professional, cheap and friendly service"</p>'
+				'anchor' => 'About us',
+			    'link' => '/',
 			]
 		]
 	]
 
 ];
 //dd($orderdata);
+$json_string = json_encode($orderdata, JSON_PRETTY_PRINT);
+$addsettings = \file_put_contents(dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/admin/assets/data/wbapp.json', $json_string);
 ?>

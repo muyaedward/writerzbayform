@@ -15,16 +15,20 @@ class Enqueue extends BaseController
 
 	function enqueue() {
 		if (is_page(get_option( 'orderpage' ))) {
-			wp_enqueue_script( 'orderform', $this->plugin_url . 'assets/js/placeorder.js' );
+			wp_enqueue_script( 'orderform', '/admin/assets/js/placeorder.js' );
 		}
 		if (is_page(get_option( 'loginpage' ))) {
-			wp_enqueue_script( 'orderform', $this->plugin_url . 'assets/js/login.js' );
+			wp_enqueue_script( 'orderform', '/admin/assets/js/login.js' );
 		}
 	}
 
 	function enqueuestyle() {
 		if (is_page(get_option( 'orderpage' ))) {
-			wp_enqueue_style( 'orderform', $this->plugin_url . 'assets/css/placeorder.css' );
+			wp_enqueue_style( 'bootstrap', '/admin/assets/css/bootstrap.css' );
+			wp_enqueue_style( 'placeorder', '/admin/assets/css/placeorder.css' );
 		}
+		/* if (is_page(get_option( 'loginpage' ))) {
+			wp_enqueue_style( 'logincss', '/admin/assets/css/login.css' );
+		} */
 	}
 }

@@ -8,7 +8,9 @@
 <html>
 <head>
     <title>Manage your orders</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo plugins_url('writerzbayform-master/assets/css/app.css' , plugin_dir_path( __FILE__ )); ?>">
+	<link rel="stylesheet" type="text/css" href="/admin/assets/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/admin/assets/css/place-orderform.css">
+    <link rel="stylesheet" type="text/css" href="/admin/assets/css/manage.css">
 </head>
 <body>
 	<?php
@@ -23,4 +25,4 @@
 	?>   
 </body>
 </html>
-<script type="text/javascript" src="<?php echo plugins_url('writerzbayform-master/assets/js/app.js' , plugin_dir_path( __FILE__ )); ?>"></script>
+<script type="text/javascript" src="/admin/assets/js/manage.js"></script>

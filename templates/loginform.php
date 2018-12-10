@@ -2,6 +2,8 @@
 <script type='text/javascript' >
     var orderdata = <?php print json_encode($orderdata) ?>;
 </script>
+<?php if ($addsettings) { ?>
 <div id="wbapplogin">
-    <wbapplogin :orderd="formdata"/>
+    <wbapp-login/>
 </div>
+<?php } ?>
