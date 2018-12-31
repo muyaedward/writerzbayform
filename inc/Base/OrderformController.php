@@ -15,14 +15,15 @@ class OrderformController extends BaseController
 		add_shortcode('manageorders', array( $this, 'manageorders' ));
 	}
 	function get_orderform() {
-		return require_once( "$this->plugin_path/templates/orderform.php" );
+		//dd(require_once( "$this->plugin_path/templates/orderform.php" ));
+		require_once( "$this->plugin_path/templates/orderform.php" );
 	}
 
 	function login_orderform() {
-		return require_once( "$this->plugin_path/templates/loginform.php" );
+		require_once( "$this->plugin_path/templates/loginform.php" );
 	}
 
 	function manageorders() {
-		return require_once( "$this->plugin_path/templates/manage.php" );
+		require_once( "$this->plugin_path/templates/manage.php" );
 	}
 }
